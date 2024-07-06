@@ -15,7 +15,7 @@ public class PageGeneratorManager {
     }
 
     public static LoginPageObject openLoginPage(WebDriver driver) {
-        return new LoginPageObject();
+        return new LoginPageObject(driver);
     }
 
 }

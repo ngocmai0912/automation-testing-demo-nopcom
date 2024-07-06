@@ -11,6 +11,7 @@
         <parameter name="server" value="demo"></parameter>
         <classes>
             <class name="register.Register"/>
+            <class name="login.Login"/>
         </classes>
     </test>
 </suite>

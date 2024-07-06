@@ -1,6 +1,7 @@
 package pageObjects;
 
 import commons.BasePage;
+import commons.PageGeneratorManager;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageUIs.RegisterPageUI;
@@ -44,44 +45,52 @@ public class RegisterPageObject extends BasePage {
 
     @Step("Click Register Button")
     public void clickRegisterButton() {
-        waitForElementClickable(driver, RegisterPageUI.REGISTER_BUTTON);
-        clickElement(driver, RegisterPageUI.REGISTER_BUTTON);
+        waitForElementClickable(driver, RegisterPageUI.REGISTER_BTN);
+        clickElement(driver, RegisterPageUI.REGISTER_BTN);
     }
 
     @Step("Verify the Firstname Error Message is Displayed")
-    public String getFirstNameErrorMessageText() {
+    public String getFirstNameErrorMessage() {
         waitForElementVisible(driver, RegisterPageUI.FIRSTNAME_ERROR_MSG);
         return getElementText(driver, RegisterPageUI.FIRSTNAME_ERROR_MSG);
     }
 
     @Step("Verify the Lastname Error Message is Displayed")
-    public String getLastNameErrorMessageText() {
+    public String getLastNameErrorMessage() {
         waitForElementVisible(driver, RegisterPageUI.LASTNAME_ERROR_MSG);
         return getElementText(driver, RegisterPageUI.LASTNAME_ERROR_MSG);
     }
 
     @Step("Verify the Email Error Message is Displayed")
-    public String getEmailErrorMessageText() {
+    public String getEmailErrorMessage() {
         waitForElementVisible(driver, RegisterPageUI.EMAIL_ERROR_MSG);
         return getElementText(driver, RegisterPageUI.EMAIL_ERROR_MSG);
     }
 
     @Step("Verify the Password Error Message is Displayed")
-    public String getPasswordErrorMessageText() {
+    public String getPasswordErrorMessage() {
         waitForElementVisible(driver, RegisterPageUI.PASSWORD_ERROR_MSG);
         return getElementText(driver, RegisterPageUI.PASSWORD_ERROR_MSG);
     }
 
     @Step("Verify the Confirm Password Error Message is Displayed")
-    public String getConfirmPasswordErrorMessageText() {
+    public String getConfirmPasswordErrorMessage() {
         waitForElementVisible(driver, RegisterPageUI.CONFIRM_PASSWORD_ERROR_MSG);
         return getElementText(driver, RegisterPageUI.CONFIRM_PASSWORD_ERROR_MSG);
     }
 
     @Step("Verify the Register Success Message is Displayed")
-    public String getRegisterSuccessfulMessageText() {
+    public String getRegisterSuccessfulMessage() {
         waitForElementVisible(driver, RegisterPageUI.REGISTER_SUCCESSFUL_MGS);
         return getElementText(driver, RegisterPageUI.REGISTER_SUCCESSFUL_MGS);
+    }
+
+    @Step("Click Logout Button")
+    public HomePageObject clickLogoutButton() {
+        waitForElementClickable(driver, RegisterPageUI.LOGOUT_BTN);
+        clickElement(driver, RegisterPageUI.LOGOUT_BTN);
+        return PageGeneratorManager.openHomePage(driver);
+
     }
 
 
