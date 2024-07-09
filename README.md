@@ -8,5 +8,4 @@ Build demo automation testing framework for nopCommerce website
 4. Allure report (with screenshots)
 5. Read data test with Excel file
 
-This demo framework is built by Ngoc Mai
-Contact me for more information via ngocmai091299@gmail.com
+This demo framework is built by Ngoc Mai. Contact me for more information via ngocmai091299@gmail.com
