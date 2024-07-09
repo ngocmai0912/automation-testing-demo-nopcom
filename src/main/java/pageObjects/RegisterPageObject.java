@@ -5,6 +5,7 @@ import commons.PageGeneratorManager;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageUIs.RegisterPageUI;
+import utilities.ExcelConfig;
 
 public class RegisterPageObject extends BasePage {
     private WebDriver driver;
@@ -47,6 +48,16 @@ public class RegisterPageObject extends BasePage {
     public void clickRegisterButton() {
         waitForElementClickable(driver, RegisterPageUI.REGISTER_BTN);
         clickElement(driver, RegisterPageUI.REGISTER_BTN);
+    }
+
+    @Step("Register with Excel data row: {1}")
+    public void registerAccount(ExcelConfig excelConfig, int rowNumber) {
+        enterFirstNameTextbox(excelConfig.getCellData("firstName", rowNumber));
+        enterLastNameTextbox(excelConfig.getCellData("lastName", rowNumber));
+        enterEmailTextbox(getRandomEmail(excelConfig.getCellData("email", rowNumber)));
+        enterPasswordTextbox(excelConfig.getCellData("password", rowNumber));
+        enterConfirmPasswordTextbox(excelConfig.getCellData("confirmPassword", rowNumber));
+        clickRegisterButton();
     }
 
     @Step("Verify the Firstname Error Message is Displayed")

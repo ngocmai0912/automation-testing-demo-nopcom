@@ -9,16 +9,14 @@ import org.testng.annotations.*;
 import pageObjects.HomePageObject;
 import pageObjects.RegisterPageObject;
 import utilities.EnvironmentConfig;
+import utilities.ExcelConfig;
 
 public class Register extends BaseTest {
     private WebDriver driver;
     private EnvironmentConfig environment;
     private HomePageObject homePage;
     private RegisterPageObject registerPage;
-    private String firstName = "Ngoc";
-    private String lastName = "Mai";
-    private String emailAddress = getRandomEmail("ngocmai");
-    private String password = "123456";
+    private ExcelConfig excelConfig;
 
     @Parameters({"browser", "server"})
     @BeforeClass
@@ -27,6 +25,8 @@ public class Register extends BaseTest {
         environment = ConfigFactory.create(EnvironmentConfig.class);
         driver = getBrowserName(browserName, environment.appUrl());
         homePage = PageGeneratorManager.openHomePage(driver);
+        excelConfig = ExcelConfig.getExcelData();
+        excelConfig.switchToSheet("RegisterData");
     }
 
     @Test
@@ -41,45 +41,25 @@ public class Register extends BaseTest {
 
     @Test
     public void TC02_Register_Failed_Invalid_Email() {
-        registerPage.enterFirstNameTextbox(firstName);
-        registerPage.enterLastNameTextbox(lastName);
-        registerPage.enterEmailTextbox("ngocmai.com");
-        registerPage.enterPasswordTextbox(password);
-        registerPage.enterConfirmPasswordTextbox(password);
-        registerPage.clickRegisterButton();
+        registerPage.registerAccount(excelConfig, 1);
         Assert.assertEquals(registerPage.getEmailErrorMessage(), "Please enter a valid email address.");
     }
 
     @Test
     public void TC03_Register_Failed_Invalid_Password() {
-        registerPage.enterFirstNameTextbox(firstName);
-        registerPage.enterLastNameTextbox(lastName);
-        registerPage.enterEmailTextbox(emailAddress);
-        registerPage.enterPasswordTextbox("123");
-        registerPage.enterConfirmPasswordTextbox("123");
-        registerPage.clickRegisterButton();
+        registerPage.registerAccount(excelConfig, 2);
         Assert.assertEquals(registerPage.getPasswordErrorMessage(), "<p>Password must meet the following rules: </p><ul><li>must have at least 6 characters and not greater than 64 characters</li></ul>");
     }
 
     @Test
     public void TC04_Register_Failed_Invalid_Confirm_Password() {
-        registerPage.enterFirstNameTextbox(firstName);
-        registerPage.enterLastNameTextbox(lastName);
-        registerPage.enterEmailTextbox(emailAddress);
-        registerPage.enterPasswordTextbox("123456");
-        registerPage.enterConfirmPasswordTextbox("123");
-        registerPage.clickRegisterButton();
+        registerPage.registerAccount(excelConfig, 3);
         Assert.assertEquals(registerPage.getConfirmPasswordErrorMessage(), "The password and confirmation password do not match.");
     }
 
     @Test
     public void TC05_Register_Successful() {
-        registerPage.enterFirstNameTextbox(firstName);
-        registerPage.enterLastNameTextbox(lastName);
-        registerPage.enterEmailTextbox(emailAddress);
-        registerPage.enterPasswordTextbox(password);
-        registerPage.enterConfirmPasswordTextbox(password);
-        registerPage.clickRegisterButton();
+        registerPage.registerAccount(excelConfig, 4);
         Assert.assertEquals(registerPage.getRegisterSuccessfulMessage(), "Your registration completed");
     }
 

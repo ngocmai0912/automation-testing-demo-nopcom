@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 public class BasePage {
@@ -254,6 +255,10 @@ public class BasePage {
         return (String) ((JavascriptExecutor) driver).executeScript("return arguments[0].validationMessage;", getWebElement(driver, locator));
     }
 
+    protected String getRandomEmail(String keysToSend) {
+        return keysToSend + new Random().nextInt(999) + "@yopmail.com";
+    }
+
     protected void waitForElementVisible(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(30)).
                 until(ExpectedConditions.visibilityOf(getWebElement(driver, locator)));
@@ -278,5 +283,4 @@ public class BasePage {
         new WebDriverWait(driver, Duration.ofSeconds(30)).
                 until(ExpectedConditions.elementToBeClickable(getWebElement(driver, locator)));
     }
-
 }

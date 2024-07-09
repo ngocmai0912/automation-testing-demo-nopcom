@@ -15,6 +15,7 @@
         <webdriver.version>4.16.1</webdriver.version>
         <testng.version>7.8.0</testng.version>
         <aspectj.version>1.9.8</aspectj.version>
+        <env>Demo</env>
     </properties>
 
     <dependencies>
@@ -54,6 +55,20 @@
             <artifactId>owner</artifactId>
             <version>1.0.12</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>5.2.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.2.5</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -74,7 +89,7 @@
                 <version>3.2.2</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/RunTestcases.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/runOn${env}.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
