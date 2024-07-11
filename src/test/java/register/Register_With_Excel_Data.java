@@ -11,7 +11,7 @@ import pageObjects.RegisterPageObject;
 import utilities.EnvironmentConfig;
 import utilities.ExcelConfig;
 
-public class Register extends BaseTest {
+public class Register_With_Excel_Data extends BaseTest {
     private WebDriver driver;
     private EnvironmentConfig environment;
     private HomePageObject homePage;
@@ -63,7 +63,7 @@ public class Register extends BaseTest {
         Assert.assertEquals(registerPage.getRegisterSuccessfulMessage(), "Your registration completed");
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void AfterClass() {
         quitBrowser();
     }

@@ -74,7 +74,7 @@ public class Login extends BaseTest {
         Assert.assertTrue(homePage.isLogoutButtonDisplayed());
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void AfterClass() {
         quitBrowser();
     }

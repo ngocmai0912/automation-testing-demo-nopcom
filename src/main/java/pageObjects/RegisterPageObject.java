@@ -54,7 +54,7 @@ public class RegisterPageObject extends BasePage {
     public void registerAccount(ExcelConfig excelConfig, int rowNumber) {
         enterFirstNameTextbox(excelConfig.getCellData("firstName", rowNumber));
         enterLastNameTextbox(excelConfig.getCellData("lastName", rowNumber));
-        enterEmailTextbox(getRandomEmail(excelConfig.getCellData("email", rowNumber)));
+        enterEmailTextbox(excelConfig.getCellData("email", rowNumber) + getRandomNumberInEmail());
         enterPasswordTextbox(excelConfig.getCellData("password", rowNumber));
         enterConfirmPasswordTextbox(excelConfig.getCellData("confirmPassword", rowNumber));
         clickRegisterButton();

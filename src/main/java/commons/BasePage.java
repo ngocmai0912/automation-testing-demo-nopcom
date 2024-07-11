@@ -259,6 +259,10 @@ public class BasePage {
         return keysToSend + new Random().nextInt(999) + "@yopmail.com";
     }
 
+    protected String getRandomNumberInEmail() {
+        return new Random().nextInt(999) + "@yopmail.com";
+    }
+
     protected void waitForElementVisible(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(30)).
                 until(ExpectedConditions.visibilityOf(getWebElement(driver, locator)));
