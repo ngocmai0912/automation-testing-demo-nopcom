@@ -10,7 +10,7 @@
         <parameter name="browser" value="chrome"></parameter>
         <parameter name="server" value="demo"></parameter>
         <classes>
-            <class name="register.Register"/>
+            <class name="register.Register_With_Excel_Data"/>
             <class name="login.Login"/>
         </classes>
     </test>
