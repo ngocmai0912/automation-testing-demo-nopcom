@@ -44,6 +44,7 @@ public class Login extends BaseTest {
         loginPage.enterPasswordTextbox("123456");
         loginPage.clickLoginButton();
         Assert.assertEquals(loginPage.getEmailErrorMessage(), "Please enter a valid email address.");
+        Assert.assertEquals(loginPage.getEmailErrorMessage(), "Please enter a valid email address.");
     }
 
     @Test
