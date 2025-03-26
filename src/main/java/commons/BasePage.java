@@ -148,7 +148,8 @@ public class BasePage {
 
     protected void selectItemInDropdown(WebDriver driver, String parentLocator, String childLocator, String itemValue) {
         getWebElement(driver, parentLocator).click();
-        List<WebElement> listItems = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(childLocator)));
+        List<WebElement> listItems = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions
+                .presenceOfAllElementsLocatedBy(getByLocator(childLocator)));
         for (WebElement item : listItems) {
             if (item.getText().equals(itemValue)) {
                 item.click();
